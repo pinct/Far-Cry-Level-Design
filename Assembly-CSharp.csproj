@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Crane.cs" />
      <Compile Include="Assets\Scripts\CrossAnimate.cs" />
      <Compile Include="Assets\Scripts\Elevator.cs" />
+     <Compile Include="Assets\Scripts\EnemyMove.cs" />
      <Compile Include="Assets\Scripts\EnemyScript.cs" />
      <Compile Include="Assets\Scripts\GlobalAmmo.cs" />
      <Compile Include="Assets\Scripts\GrappleHook.cs" />
@@ -79,6 +80,7 @@
      <Compile Include="Assets\Scripts\Ladder.cs" />
      <Compile Include="Assets\Scripts\PlayerCasting.cs" />
      <Compile Include="Assets\Scripts\Zipline.cs" />
+     <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
      <None Include="Assets\3D Models\Props\Weapons\Silencer 5.56\Readme.txt" />
      <None Include="Assets\KajamansRoads\FileNamesDescription.txt" />
      <None Include="Assets\KajamansRoads\Free\ReadMe.txt" />
