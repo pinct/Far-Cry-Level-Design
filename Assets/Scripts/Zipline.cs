@@ -9,7 +9,7 @@ public class Zipline : MonoBehaviour
 	public GameObject FPSController;
 	public GameObject TextDisplay;
 	public float TheDistance = PlayerCasting.DistanceFromTarget;
-	bool canzip = false;
+	public bool canzip = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,11 +41,17 @@ public class Zipline : MonoBehaviour
 	}
 	void OnTriggerEnter(Collider other)
     {
-		canzip = true;
+		if (other.gameObject.tag == "Player")
+		{
+			canzip = true;
+		}
     }
 	void OnTriggerExit(Collider other)
     {
-		canzip = false;
-		TextDisplay.GetComponent<Text>().text="";
+		if (other.gameObject.tag == "Player")
+		{
+			canzip = false;
+			TextDisplay.GetComponent<Text>().text="";
+		}
     }
 }

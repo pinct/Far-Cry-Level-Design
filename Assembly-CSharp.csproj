@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\Zipline.cs" />
      <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
      <None Include="Assets\3D Models\Props\Weapons\Silencer 5.56\Readme.txt" />
+     <None Include="Assets\Industrial Props\ReadMe.txt" />
      <None Include="Assets\KajamansRoads\FileNamesDescription.txt" />
      <None Include="Assets\KajamansRoads\Free\ReadMe.txt" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />

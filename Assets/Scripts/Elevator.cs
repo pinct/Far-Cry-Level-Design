@@ -39,11 +39,17 @@ public class Elevator : MonoBehaviour
 	}
 	void OnTriggerEnter(Collider other)
     {
-		canele = true;
+		if (other.gameObject.tag == "Player")
+		{
+			canele = true;
+		}
     }
 	void OnTriggerExit(Collider other)
     {
-		canele = false;
-		TextDisplay.GetComponent<Text>().text="";
+		if (other.gameObject.tag == "Player")
+		{
+			canele = false;
+			TextDisplay.GetComponent<Text>().text="";
+		}
     }
 }
