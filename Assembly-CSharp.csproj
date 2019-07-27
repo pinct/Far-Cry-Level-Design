@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Low Poly Animated People\RandomAnimationPicker.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -80,6 +81,7 @@
      <Compile Include="Assets\Scripts\Keycard.cs" />
      <Compile Include="Assets\Scripts\Ladder.cs" />
      <Compile Include="Assets\Scripts\PlayerCasting.cs" />
+     <Compile Include="Assets\Scripts\VIPController.cs" />
      <Compile Include="Assets\Scripts\Zipline.cs" />
      <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
      <None Include="Assets\3D Models\Props\Weapons\Silencer 5.56\Readme.txt" />

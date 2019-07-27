@@ -6,14 +6,14 @@ public class HandGunDamage : MonoBehaviour
 	public int DamageAmount = 5;
 	public float TargetDistance;
 	public float AllowedRange = 100.0f;
-	int layerMask = 1 << 10;
+	LayerMask mask = 1 << 10;
 	
 
 	void Update () {
-		layerMask = ~layerMask;
+		mask = ~mask;
 		if(Input.GetButtonDown("Fire1") && GlobalAmmo.LoadedAmmo != 0) {
 			RaycastHit Shot;
-			if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out Shot, Mathf.Infinity, layerMask)) {
+			if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out Shot, Mathf.Infinity, mask)) {
 				if (Shot.collider.tag == "Enemy")
 				{
 					TargetDistance = Shot.distance;

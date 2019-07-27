@@ -20,9 +20,11 @@ public class EnemyMove : MonoBehaviour
 	public float changeTime = 3.0f;
 	float timer;
     int direction = 1;
+	LayerMask mask = 1 << 10;
     // Start is called before the first frame update
     void Start()
     {
+		mask = ~mask;
         Enemy.GetComponent<Animation>().Play();
 		if (spot1 != null && spot2 != null)
 		{
@@ -44,7 +46,7 @@ public class EnemyMove : MonoBehaviour
 		{
 			Enemy.transform.LookAt(Player.transform);
 			cube.transform.LookAt(Player.transform);
-			if (Physics.Raycast(cube.transform.position, cube.transform.TransformDirection(Vector3.forward), out shot))
+			if (Physics.Raycast(cube.transform.position, cube.transform.TransformDirection(Vector3.forward), out shot, Mathf.Infinity, mask))
 			{
 				if (shot.transform.tag == "Player")
 				{
@@ -72,13 +74,22 @@ public class EnemyMove : MonoBehaviour
     }
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.gameObject.tag == "Player")
 		{
 			cylinder.GetComponent<MeshCollider>().enabled = false;
-			if (Physics.Linecast(Enemy.transform.position, Player.transform.position))
+			cube.transform.LookAt(Player.transform);
+			if (Physics.Raycast(cube.transform.position, cube.transform.TransformDirection(Vector3.forward), out shot, Mathf.Infinity, mask))
 			{
-				IsAlert = true;
+				if (shot.transform.tag == "Player")
+				{
+					IsAlert = true;
+				}
+				else
+				{
+					cylinder.GetComponent<MeshCollider>().enabled = true;
+				}
 			}
+			
 		}
 	}
 	IEnumerator EnemyDamage()
@@ -91,7 +102,7 @@ public class EnemyMove : MonoBehaviour
 	}
 	IEnumerator EnemyPace()
 	{
-		while (!IsAlert)
+		while (IsAlert == false)
 		{
 			float counter = 0f;
 			float travelDuration = 4.0f;
@@ -101,7 +112,15 @@ public class EnemyMove : MonoBehaviour
 				 MoveTrigger = 1;
 				 transform.position = Vector3.Lerp (spot1.transform.position, spot2.transform.position, counter / travelDuration);
 				 counter += Time.deltaTime;
+				 if (IsAlert == true)
+				 {
+					 break;
+				 }
 				 yield return null;
+			 }
+			 if (IsAlert == true)
+			 {
+				 break;
 			 }
 			 transform.position = spot2.transform.position;
 			 
@@ -116,7 +135,15 @@ public class EnemyMove : MonoBehaviour
 				 MoveTrigger = 1;
 				 transform.position = Vector3.Lerp (spot2.transform.position, spot1.transform.position, counter / travelDuration);
 				 counter += Time.deltaTime;
+				 if (IsAlert == true)
+				 {
+					 break;
+				 }
 				 yield return null;
+			 }
+			 if (IsAlert == true)
+			 {
+				 break;
 			 }
 	 
 			 transform.position = spot1.transform.position;
